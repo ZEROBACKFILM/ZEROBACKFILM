@@ -1,0 +1,629 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZEROBACK FILM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,200;0,300;0,400;1,200&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #080808;
+      --white: #f0f0f0;
+      --gray: #999;
+      --border: rgba(240,240,240,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── GRAIN OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 64px;
+      transition: background 0.5s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(8,8,8,0.95);
+      backdrop-filter: blur(20px);
+      padding: 20px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 6px;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 48px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(240,240,240,0.45);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    #hero {
+      height: 100vh;
+      min-height: 700px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated geometric lines */
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .hero-lines::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 800px; height: 800px;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(240,240,240,0.04);
+      border-radius: 50%;
+      animation: rotate 30s linear infinite;
+    }
+    .hero-lines::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 500px; height: 500px;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(240,240,240,0.03);
+      border-radius: 50%;
+      animation: rotate 20s linear infinite reverse;
+    }
+    @keyframes rotate {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Vertical divider line */
+    .hero-vline {
+      position: absolute;
+      left: 64px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(240,240,240,0.1) 30%, rgba(240,240,240,0.1) 70%, transparent);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 64px 60px;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(240,240,240,0.3);
+      margin-bottom: 24px;
+      margin-left: 2px;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(100px, 14vw, 200px);
+      line-height: 0.88;
+      letter-spacing: -1px;
+      position: relative;
+    }
+    .hero-title .outline {
+      -webkit-text-stroke: 1px rgba(240,240,240,0.25);
+      color: transparent;
+      display: block;
+    }
+    .hero-title .filled {
+      color: var(--white);
+      display: block;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 32px 64px 52px;
+      position: relative;
+      border-top: 1px solid var(--border);
+    }
+    .hero-desc {
+      font-size: 12px;
+      line-height: 2;
+      color: rgba(240,240,240,0.4);
+      letter-spacing: 0.5px;
+      max-width: 280px;
+    }
+    .hero-year {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: rgba(240,240,240,0.2);
+    }
+    .hero-scroll-indicator {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(240,240,240,0.3);
+    }
+    .scroll-dot {
+      width: 4px; height: 4px;
+      background: rgba(240,240,240,0.3);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 120px 64px;
+      border-top: 1px solid var(--border);
+    }
+    .label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(240,240,240,0.25);
+      margin-bottom: 64px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .label::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: rgba(240,240,240,0.2);
+    }
+
+    /* ── ABOUT ── */
+    #about {}
+    .about-body {
+      font-size: 14px;
+      line-height: 2.4;
+      color: rgba(240,240,240,0.45);
+      max-width: 560px;
+    }
+
+    /* ── WORK ── */
+    #work { padding-bottom: 0; }
+    .work-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+    .work-note {
+      font-size: 12px;
+      color: rgba(240,240,240,0.3);
+      letter-spacing: 0.5px;
+      font-style: italic;
+    }
+
+    .work-list { border-top: 1px solid var(--border); }
+    .work-item {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr auto;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: padding 0.3s;
+      gap: 40px;
+      text-decoration: none;
+      color: var(--white);
+    }
+    .work-item:hover {
+      padding-left: 12px;
+    }
+    .work-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: rgba(240,240,240,0.2);
+    }
+    .work-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 1px;
+      transition: letter-spacing 0.3s;
+    }
+    .work-item:hover .work-name { letter-spacing: 2px; }
+    .work-artist {
+      font-size: 12px;
+      color: rgba(240,240,240,0.4);
+      letter-spacing: 1px;
+    }
+    .work-year {
+      font-size: 12px;
+      color: rgba(240,240,240,0.25);
+      letter-spacing: 2px;
+      text-align: right;
+    }
+
+    /* Grid section below list */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 2px;
+    }
+    .grid-cell {
+      aspect-ratio: 4/3;
+      background: #111;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .grid-cell.tall { aspect-ratio: 3/4; }
+    .grid-cell-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: rgba(240,240,240,0.1);
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 2;
+    }
+    .grid-cell-inner {
+      text-align: center;
+    }
+    .grid-cell-sub {
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: rgba(240,240,240,0.05);
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.88) 0%, transparent 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .grid-cell:hover .grid-overlay { opacity: 1; }
+    .grid-overlay-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1.5px;
+      color: var(--white);
+    }
+    .grid-overlay-meta {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(240,240,240,0.45);
+      margin-top: 4px;
+    }
+
+    /* ── SERVICES ── */
+    #services {}
+    .services-list { margin-top: 0; }
+    .service-row {
+      display: grid;
+      grid-template-columns: 60px 200px 1fr 120px;
+      align-items: start;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 40px;
+    }
+    .service-row:first-child { border-top: 1px solid var(--border); }
+    .svc-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: rgba(240,240,240,0.2);
+      padding-top: 4px;
+    }
+    .svc-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 0.5px;
+      line-height: 1;
+    }
+    .svc-desc {
+      font-size: 13px;
+      line-height: 2;
+      color: rgba(240,240,240,0.4);
+    }
+    .svc-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(240,240,240,0.2);
+      text-align: right;
+      padding-top: 4px;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+      padding: 160px 64px;
+    }
+    .contact-pre {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(240,240,240,0.25);
+      margin-bottom: 40px;
+    }
+    .contact-big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(56px, 9vw, 130px);
+      line-height: 0.9;
+      letter-spacing: 1px;
+      margin-bottom: 56px;
+    }
+    .contact-big .stroke {
+      -webkit-text-stroke: 1px rgba(240,240,240,0.2);
+      color: transparent;
+      display: block;
+    }
+    .contact-big .solid {
+      color: var(--white);
+      display: block;
+    }
+    .contact-link {
+      display: inline-block;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      padding: 18px 48px;
+      border: 1px solid rgba(240,240,240,0.2);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .contact-link:hover {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+    .contact-socials {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 64px;
+      list-style: none;
+    }
+    .contact-socials a {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(240,240,240,0.25);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .contact-socials a:hover { color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 64px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(240,240,240,0.15);
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.up { transform: translateY(0); opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="logo" href="#">ZEROBACK FILM</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-lines"></div>
+    <div class="hero-vline"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Music Video Production — Seoul</p>
+      <h1 class="hero-title">
+        <span class="filled">ZERO</span>
+        <span class="outline">BACK</span>
+      </h1>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-scroll-indicator">
+        <div class="scroll-dot"></div>
+        <span>Scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="label reveal">About</p>
+    <p class="about-body reveal">
+      음악처럼 느껴지는 이미지를 만드는 것 —<br />
+      그 하나의 집착으로 움직이는 뮤직비디오 프로덕션입니다.<br />
+      아티스트와 긴밀히 협업하며 사운드를<br />
+      잊을 수 없는 시각적 경험으로 전환합니다.
+    </p>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="work-intro reveal">
+      <p class="label" style="margin-bottom:0">Selected Work</p>
+      <p class="work-note">Replace with your project thumbnails &amp; links</p>
+    </div>
+
+    <div class="work-grid reveal">
+      <div class="grid-cell" style="grid-column: span 2;">
+        <div class="grid-cell-inner"><div class="grid-cell-label">Add Thumbnail</div></div>
+        <div class="grid-overlay">
+          <div class="grid-overlay-title">PROJECT TITLE</div>
+          <div class="grid-overlay-meta">Artist Name · 2024</div>
+        </div>
+      </div>
+      <div class="grid-cell tall" style="grid-row: span 2;">
+        <div class="grid-cell-inner"><div class="grid-cell-label">Add Thumbnail</div></div>
+        <div class="grid-overlay">
+          <div class="grid-overlay-title">PROJECT TITLE</div>
+          <div class="grid-overlay-meta">Artist Name · 2024</div>
+        </div>
+      </div>
+      <div class="grid-cell">
+        <div class="grid-cell-inner"><div class="grid-cell-label">Add Thumbnail</div></div>
+        <div class="grid-overlay">
+          <div class="grid-overlay-title">PROJECT TITLE</div>
+          <div class="grid-overlay-meta">Artist Name · 2023</div>
+        </div>
+      </div>
+      <div class="grid-cell">
+        <div class="grid-cell-inner"><div class="grid-cell-label">Add Thumbnail</div></div>
+        <div class="grid-overlay">
+          <div class="grid-overlay-title">PROJECT TITLE</div>
+          <div class="grid-overlay-meta">Artist Name · 2023</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="label reveal">Services</p>
+    <div class="services-list">
+      <div class="service-row reveal">
+        <div class="svc-num">01</div>
+        <div class="svc-name">Music<br />Video</div>
+        <div class="svc-desc">
+          컨셉부터 최종 납품까지 전 과정을 책임집니다.
+          프리프로덕션, 촬영, 후반작업 — 모든 것이 당신의 음악을 중심으로 구성됩니다.
+        </div>
+        <div class="svc-tag">Full Service</div>
+      </div>
+      <div class="service-row reveal">
+        <div class="svc-num">02</div>
+        <div class="svc-name">Visual<br />Direction</div>
+        <div class="svc-desc">
+          아트 디렉션, 스타일링, 촬영 — 프로젝트에 일관된
+          비주얼 아이덴티티를 부여합니다. 모든 프레임은 의도적입니다.
+        </div>
+        <div class="svc-tag">Creative</div>
+      </div>
+      <div class="service-row reveal">
+        <div class="svc-num">03</div>
+        <div class="svc-name">Post<br />Production</div>
+        <div class="svc-desc">
+          색보정, 편집, 마무리 작업까지 — 좋은 촬영본을
+          훌륭한 작품으로 끌어올리는 마지막 한 걸음.
+        </div>
+        <div class="svc-tag">Post</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="contact-pre reveal">함께 만들어볼까요?</p>
+    <a class="contact-link reveal" href="mailto:contact@zerobackfilm.com">
+      contact@zerobackfilm.com
+    </a>
+    <ul class="contact-socials reveal">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">YouTube</a></li>
+      <li><a href="#">Vimeo</a></li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Zeroback Film</span>
+    <span>Seoul, Republic of Korea</span>
+  </footer>
+
+  <script>
+    // Navbar
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // Reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('up'), i * 100);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
