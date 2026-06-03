@@ -294,7 +294,7 @@
       margin-top: 2px;
     }
     .grid-cell {
-      aspect-ratio: 4/3;
+      aspect-ratio: 16/9;
       background: #111;
       position: relative;
       overflow: hidden;
@@ -303,7 +303,6 @@
       justify-content: center;
       cursor: pointer;
     }
-    .grid-cell.tall { aspect-ratio: 3/4; }
     .grid-cell-label {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 11px;
@@ -335,6 +334,18 @@
       transition: opacity 0.35s;
     }
     .grid-cell:hover .grid-overlay { opacity: 1; }
+    .grid-cell img { display: block; }
+    .grid-cell img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .grid-cell:hover img {
+      transform: scale(1.04);
+    }
     .grid-overlay-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 20px;
@@ -478,7 +489,6 @@
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -518,86 +528,71 @@
   <!-- WORK -->
   <section id="work">
     <div class="work-intro reveal">
-      <p class="label" style="margin-bottom:0">Selected Work</p>
-      <p class="work-note">Replace with your project thumbnails &amp; links</p>
+      <p class="label" style="margin-bottom:0">Music Videos</p>
     </div>
 
     <div class="work-grid reveal">
-      <div class="grid-cell" style="grid-column: span 2;">
-        <div class="grid-cell-inner"><div class="grid-cell-label">Add Thumbnail</div></div>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=tDKjrHeuyOw" target="_blank">
+        <img src="https://img.youtube.com/vi/tDKjrHeuyOw/maxresdefault.jpg" alt="FRENZY" />
         <div class="grid-overlay">
-          <div class="grid-overlay-title">PROJECT TITLE</div>
-          <div class="grid-overlay-meta">Artist Name · 2024</div>
+          <div class="grid-overlay-title">FRENZY</div>
+          <div class="grid-overlay-meta">CHOCO 1&amp;2</div>
         </div>
-      </div>
-      <div class="grid-cell tall" style="grid-row: span 2;">
-        <div class="grid-cell-inner"><div class="grid-cell-label">Add Thumbnail</div></div>
+      </a>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=pIfScZGDNsc" target="_blank">
+        <img src="https://img.youtube.com/vi/pIfScZGDNsc/maxresdefault.jpg" alt="GIMME" />
         <div class="grid-overlay">
-          <div class="grid-overlay-title">PROJECT TITLE</div>
-          <div class="grid-overlay-meta">Artist Name · 2024</div>
+          <div class="grid-overlay-title">GIMME</div>
+          <div class="grid-overlay-meta">CHOCO 1&amp;2</div>
         </div>
-      </div>
-      <div class="grid-cell">
-        <div class="grid-cell-inner"><div class="grid-cell-label">Add Thumbnail</div></div>
+      </a>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=NCuFonpf-qk" target="_blank">
+        <img src="https://img.youtube.com/vi/NCuFonpf-qk/maxresdefault.jpg" alt="RIZZ" />
         <div class="grid-overlay">
-          <div class="grid-overlay-title">PROJECT TITLE</div>
-          <div class="grid-overlay-meta">Artist Name · 2023</div>
+          <div class="grid-overlay-title">RIZZ</div>
+          <div class="grid-overlay-meta">XLOV</div>
         </div>
-      </div>
-      <div class="grid-cell">
-        <div class="grid-cell-inner"><div class="grid-cell-label">Add Thumbnail</div></div>
+      </a>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=b7-vel_KNAc" target="_blank">
+        <img src="https://img.youtube.com/vi/b7-vel_KNAc/maxresdefault.jpg" alt="SECRET" />
         <div class="grid-overlay">
-          <div class="grid-overlay-title">PROJECT TITLE</div>
-          <div class="grid-overlay-meta">Artist Name · 2023</div>
+          <div class="grid-overlay-title">SECRET</div>
+          <div class="grid-overlay-meta">CAMO</div>
         </div>
-      </div>
+      </a>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=Ad23TkTfS1A" target="_blank">
+        <img src="https://img.youtube.com/vi/Ad23TkTfS1A/maxresdefault.jpg" alt="LONDON" />
+        <div class="grid-overlay">
+          <div class="grid-overlay-title">LONDON</div>
+          <div class="grid-overlay-meta">LEON</div>
+        </div>
+      </a>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=KsAwkCQV-lU" target="_blank">
+        <img src="https://img.youtube.com/vi/KsAwkCQV-lU/maxresdefault.jpg" alt="I KNOW" />
+        <div class="grid-overlay">
+          <div class="grid-overlay-title">I KNOW</div>
+          <div class="grid-overlay-meta">GYUN</div>
+        </div>
+      </a>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=SuomKkNFQnw" target="_blank">
+        <img src="https://img.youtube.com/vi/SuomKkNFQnw/mqdefault.jpg" alt="I Want To Be Loved" />
+        <div class="grid-overlay">
+          <div class="grid-overlay-title">I WANT TO BE LOVED</div>
+          <div class="grid-overlay-meta">DIVINE</div>
+        </div>
+      </a>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <p class="label reveal">Services</p>
-    <div class="services-list">
-      <div class="service-row reveal">
-        <div class="svc-num">01</div>
-        <div class="svc-name">Music<br />Video</div>
-        <div class="svc-desc">
-          컨셉부터 최종 납품까지 전 과정을 책임집니다.
-          프리프로덕션, 촬영, 후반작업 — 모든 것이 당신의 음악을 중심으로 구성됩니다.
-        </div>
-        <div class="svc-tag">Full Service</div>
-      </div>
-      <div class="service-row reveal">
-        <div class="svc-num">02</div>
-        <div class="svc-name">Visual<br />Direction</div>
-        <div class="svc-desc">
-          아트 디렉션, 스타일링, 촬영 — 프로젝트에 일관된
-          비주얼 아이덴티티를 부여합니다. 모든 프레임은 의도적입니다.
-        </div>
-        <div class="svc-tag">Creative</div>
-      </div>
-      <div class="service-row reveal">
-        <div class="svc-num">03</div>
-        <div class="svc-name">Post<br />Production</div>
-        <div class="svc-desc">
-          색보정, 편집, 마무리 작업까지 — 좋은 촬영본을
-          훌륭한 작품으로 끌어올리는 마지막 한 걸음.
-        </div>
-        <div class="svc-tag">Post</div>
-      </div>
-    </div>
-  </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <p class="contact-pre reveal">함께 만들어볼까요?</p>
-    <a class="contact-link reveal" href="mailto:contact@zerobackfilm.com">
-      contact@zerobackfilm.com
+    <a class="contact-link reveal" href="mailto:zeroback0film@gmail.com">
+      zeroback0film@gmail.com
     </a>
     <ul class="contact-socials reveal">
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">YouTube</a></li>
-      <li><a href="#">Vimeo</a></li>
+      <li><a href="tel:01062504093">010-6250-4093</a></li>
+      <li><a href="#">@_fif3r</a></li>
     </ul>
   </section>
 
@@ -608,6 +603,14 @@
   </footer>
 
   <script>
+    // Thumbnail fallback
+    document.querySelectorAll('.grid-cell img').forEach(img => {
+      img.onerror = function() {
+        const id = this.src.match(/vi\/([^/]+)\//)[1];
+        this.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+        this.onerror = null;
+      };
+    });
     // Navbar
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
