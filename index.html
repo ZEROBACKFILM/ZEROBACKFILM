@@ -447,6 +447,29 @@
       color: rgba(240,240,240,0.15);
     }
 
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 24px 24px; }
+      .logo { font-size: 15px; letter-spacing: 4px; white-space: nowrap; }
+      .nav-links { gap: 20px; }
+      .nav-links a { font-size: 10px; letter-spacing: 1.5px; }
+
+      #hero { min-height: 100svh; }
+      .hero-content { padding: 0 24px 40px; }
+      .hero-bottom { padding: 20px 24px 36px; }
+      .hero-eyebrow { font-size: 9px; letter-spacing: 3px; }
+
+      section { padding: 72px 24px; }
+
+      .work-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+
+      #contact { padding: 100px 24px; }
+      .contact-link { font-size: 11px; padding: 16px 28px; }
+      .contact-socials { gap: 28px; }
+
+      footer { padding: 24px 24px; flex-direction: column; gap: 8px; }
+    }
+
     /* ── REVEAL ── */
     .reveal {
       opacity: 0;
