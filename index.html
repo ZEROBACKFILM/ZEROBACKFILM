@@ -86,19 +86,24 @@
       overflow: hidden;
     }
 
-    /* Hero background image */
+    /* Hero background */
     .hero-bg {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(to bottom, transparent 30%, rgba(8,8,8,0.7) 70%, rgba(8,8,8,1) 100%),
-        linear-gradient(to right, rgba(8,8,8,0.3), transparent),
-        url('https://images.unsplash.com/photo-1598387993441-a364f854cfbe?w=1800&q=80&auto=format&fit=crop') center/cover no-repeat;
-      filter: grayscale(100%) contrast(1.1);
-      transform: scale(1.02);
-      transition: transform 8s ease;
+      overflow: hidden;
     }
-    #hero:hover .hero-bg { transform: scale(1.06); }
+    .hero-bg canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 30%, rgba(8,8,8,0.5) 60%, rgba(8,8,8,1) 100%);
+    }
 
     /* Vertical divider line */
     .hero-vline {
@@ -133,13 +138,13 @@
       letter-spacing: -1px;
       position: relative;
     }
-    .hero-title .outline {
-      -webkit-text-stroke: 1px rgba(240,240,240,0.25);
-      color: transparent;
-      display: block;
-    }
     .hero-title .filled {
       color: var(--white);
+      display: block;
+    }
+    .hero-title .outline {
+      -webkit-text-stroke: 1px rgba(240,240,240,0.4);
+      color: transparent;
       display: block;
     }
 
@@ -211,7 +216,7 @@
       font-size: 14px;
       line-height: 2.4;
       color: rgba(240,240,240,0.45);
-      max-width: 560px;
+      max-width: 720px;
     }
 
     /* ── WORK ── */
@@ -479,7 +484,7 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg"><canvas id="heroCanvas"></canvas></div>
     <div class="hero-vline"></div>
 
     <div class="hero-content">
@@ -502,10 +507,11 @@
   <section id="about">
     <p class="label reveal">About</p>
     <p class="about-body reveal">
-      음악처럼 느껴지는 이미지를 만드는 것 —<br />
-      그 하나의 집착으로 움직이는 뮤직비디오 프로덕션입니다.<br />
-      아티스트와 긴밀히 협업하며 사운드를<br />
-      잊을 수 없는 시각적 경험으로 전환합니다.
+      우리는 단순히 아름다운 이미지를 나열하는 영상을 만들지 않습니다.<br /><br />
+      견고한 기획을 기반으로, 시각적 완성도와 이야기의 재미를 함께 설계합니다.<br />
+      상업적 목적과 예술적 가치를 균형 있게 담아내며,<br />
+      한 편의 영상이 브랜드와 아티스트의 메시지를 더욱 강렬하게 전달할 수 있도록 연출합니다.<br /><br />
+      우리는 이미지 너머의 의미를 만들고, 이야기로 기억되는 뮤직비디오를 제작합니다.
     </p>
   </section>
 
@@ -576,7 +582,7 @@
     </a>
     <ul class="contact-socials reveal">
       <li><a href="tel:01062504093">010-6250-4093</a></li>
-      <li><a href="#">@_fif3r</a></li>
+      <li><a href="https://www.instagram.com/_fif3r/" target="_blank">@_fif3r</a></li>
     </ul>
   </section>
 
@@ -587,6 +593,60 @@
   </footer>
 
   <script>
+    // Hero canvas
+    (function() {
+      const canvas = document.getElementById('heroCanvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < 6; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: 200 + Math.random() * 300,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+            opacity: 0.03 + Math.random() * 0.05
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = '#080808';
+        ctx.fillRect(0, 0, w, h);
+
+        particles.forEach(p => {
+          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+          grad.addColorStop(0, `rgba(200,200,200,${p.opacity})`);
+          grad.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, w, h);
+
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < -p.r) p.x = w + p.r;
+          if (p.x > w + p.r) p.x = -p.r;
+          if (p.y < -p.r) p.y = h + p.r;
+          if (p.y > h + p.r) p.y = -p.r;
+        });
+
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      initParticles();
+      draw();
+      window.addEventListener('resize', () => { resize(); initParticles(); });
+    })();
+
     // Thumbnail fallback
     document.querySelectorAll('.grid-cell img').forEach(img => {
       img.onerror = function() {
