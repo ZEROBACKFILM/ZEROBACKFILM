@@ -86,35 +86,19 @@
       overflow: hidden;
     }
 
-    /* Animated geometric lines */
-    .hero-lines {
+    /* Hero background image */
+    .hero-bg {
       position: absolute;
       inset: 0;
-      overflow: hidden;
+      background:
+        linear-gradient(to bottom, transparent 30%, rgba(8,8,8,0.7) 70%, rgba(8,8,8,1) 100%),
+        linear-gradient(to right, rgba(8,8,8,0.3), transparent),
+        url('https://images.unsplash.com/photo-1598387993441-a364f854cfbe?w=1800&q=80&auto=format&fit=crop') center/cover no-repeat;
+      filter: grayscale(100%) contrast(1.1);
+      transform: scale(1.02);
+      transition: transform 8s ease;
     }
-    .hero-lines::before {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      width: 800px; height: 800px;
-      transform: translate(-50%, -50%);
-      border: 1px solid rgba(240,240,240,0.04);
-      border-radius: 50%;
-      animation: rotate 30s linear infinite;
-    }
-    .hero-lines::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      width: 500px; height: 500px;
-      transform: translate(-50%, -50%);
-      border: 1px solid rgba(240,240,240,0.03);
-      border-radius: 50%;
-      animation: rotate 20s linear infinite reverse;
-    }
-    @keyframes rotate {
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
+    #hero:hover .hero-bg { transform: scale(1.06); }
 
     /* Vertical divider line */
     .hero-vline {
@@ -495,7 +479,7 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-lines"></div>
+    <div class="hero-bg"></div>
     <div class="hero-vline"></div>
 
     <div class="hero-content">
