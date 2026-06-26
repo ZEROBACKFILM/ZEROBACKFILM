@@ -301,11 +301,19 @@
       inset: 0;
       background: linear-gradient(to top, rgba(8,8,8,0.88) 0%, transparent 55%);
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
       padding: 24px;
       opacity: 0;
       transition: opacity 0.35s;
+    }
+    .grid-overlay-right {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(240,240,240,0.35);
+      text-align: right;
     }
     .grid-cell:hover .grid-overlay { opacity: 1; }
     .grid-cell img { display: block; }
@@ -533,36 +541,51 @@
       <a class="grid-cell" href="https://www.youtube.com/watch?v=tDKjrHeuyOw" target="_blank">
         <img src="https://img.youtube.com/vi/tDKjrHeuyOw/maxresdefault.jpg" alt="FRENZY" />
         <div class="grid-overlay">
-          <div class="grid-overlay-title">FRENZY</div>
-          <div class="grid-overlay-meta">CHOCO 1&amp;2</div>
+          <div class="grid-overlay-left">
+            <div class="grid-overlay-title">FRENZY</div>
+            <div class="grid-overlay-meta">CHOCO 1&amp;2</div>
+          </div>
+          <div class="grid-overlay-right">DIRECTED BY ZEROBACK</div>
         </div>
       </a>
       <a class="grid-cell" href="https://www.youtube.com/watch?v=pIfScZGDNsc" target="_blank">
         <img src="https://img.youtube.com/vi/pIfScZGDNsc/maxresdefault.jpg" alt="GIMME" />
         <div class="grid-overlay">
-          <div class="grid-overlay-title">GIMME</div>
-          <div class="grid-overlay-meta">CHOCO 1&amp;2</div>
+          <div class="grid-overlay-left">
+            <div class="grid-overlay-title">GIMME</div>
+            <div class="grid-overlay-meta">CHOCO 1&amp;2</div>
+          </div>
+          <div class="grid-overlay-right">DIRECTED BY ZEROBACK</div>
         </div>
       </a>
       <a class="grid-cell" href="https://www.youtube.com/watch?v=NCuFonpf-qk" target="_blank">
         <img src="https://img.youtube.com/vi/NCuFonpf-qk/maxresdefault.jpg" alt="RIZZ" />
         <div class="grid-overlay">
-          <div class="grid-overlay-title">RIZZ</div>
-          <div class="grid-overlay-meta">XLOV</div>
+          <div class="grid-overlay-left">
+            <div class="grid-overlay-title">RIZZ</div>
+            <div class="grid-overlay-meta">XLOV</div>
+          </div>
+          <div class="grid-overlay-right">DIRECTED BY ZEROBACK</div>
         </div>
       </a>
       <a class="grid-cell" href="https://www.youtube.com/watch?v=b7-vel_KNAc" target="_blank">
         <img src="https://img.youtube.com/vi/b7-vel_KNAc/maxresdefault.jpg" alt="SECRET" />
         <div class="grid-overlay">
-          <div class="grid-overlay-title">SECRET</div>
-          <div class="grid-overlay-meta">CAMO</div>
+          <div class="grid-overlay-left">
+            <div class="grid-overlay-title">SECRET</div>
+            <div class="grid-overlay-meta">CAMO</div>
+          </div>
+          <div class="grid-overlay-right">DIRECTED BY ZEROBACK</div>
         </div>
       </a>
       <a class="grid-cell" href="https://www.youtube.com/watch?v=CsGENgLpyaw" target="_blank">
         <img src="https://img.youtube.com/vi/CsGENgLpyaw/maxresdefault.jpg" alt="RIDE OR DIE" />
         <div class="grid-overlay">
-          <div class="grid-overlay-title">RIDE OR DIE</div>
-          <div class="grid-overlay-meta">EVAN</div>
+          <div class="grid-overlay-left">
+            <div class="grid-overlay-title">RIDE OR DIE</div>
+            <div class="grid-overlay-meta">EVAN</div>
+          </div>
+          <div class="grid-overlay-right">EDIT</div>
         </div>
       </a>
     </div>
