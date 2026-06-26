@@ -315,7 +315,9 @@
       color: rgba(240,240,240,0.35);
       text-align: right;
     }
-    .grid-cell:hover .grid-overlay { opacity: 1; }
+    .grid-cell:hover .grid-overlay,
+    .grid-cell.touch-active .grid-overlay { opacity: 1; }
+    .grid-cell.touch-active img { transform: scale(1.04); }
     .grid-cell img { display: block; }
     .grid-cell img {
       position: absolute;
@@ -638,6 +640,32 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Mobile touch overlay
+    if ('ontouchstart' in window) {
+      document.querySelectorAll('.grid-cell').forEach(cell => {
+        cell.addEventListener('touchstart', function(e) {
+          const isActive = this.classList.contains('touch-active');
+          document.querySelectorAll('.grid-cell').forEach(c => c.classList.remove('touch-active'));
+          if (!isActive) {
+            e.preventDefault();
+            this.classList.add('touch-active');
+          }
+        }, { passive: false });
+
+        cell.addEventListener('click', function(e) {
+          if (!this.classList.contains('touch-active')) {
+            e.preventDefault();
+          }
+        });
+      });
+
+      document.addEventListener('touchstart', function(e) {
+        if (!e.target.closest('.grid-cell')) {
+          document.querySelectorAll('.grid-cell').forEach(c => c.classList.remove('touch-active'));
+        }
+      });
+    }
   </script>
 </body>
 </html>
