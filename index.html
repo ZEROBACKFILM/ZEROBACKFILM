@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,16 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,200;0,300;0,400;1,200&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
     :root {
       --black: #080808;
       --white: #f0f0f0;
       --gray: #999;
       --border: rgba(240,240,240,0.08);
     }
-
+ 
     html { scroll-behavior: smooth; }
-
+ 
     body {
       background: var(--black);
       color: var(--white);
@@ -25,7 +24,7 @@
       font-weight: 300;
       overflow-x: hidden;
     }
-
+ 
     /* ── GRAIN OVERLAY ── */
     body::before {
       content: '';
@@ -36,7 +35,7 @@
       pointer-events: none;
       z-index: 1000;
     }
-
+ 
     /* ── NAV ── */
     nav {
       position: fixed;
@@ -75,7 +74,7 @@
       transition: color 0.3s;
     }
     .nav-links a:hover { color: var(--white); }
-
+ 
     /* ── HERO ── */
     #hero {
       height: 100vh;
@@ -85,13 +84,13 @@
       position: relative;
       overflow: hidden;
     }
-
+ 
     /* Hero background */
     .hero-bg {
       position: absolute;
       inset: 0;
     }
-
+ 
     /* Vertical divider line */
     .hero-vline {
       position: absolute;
@@ -100,7 +99,7 @@
       width: 1px;
       background: linear-gradient(to bottom, transparent, rgba(240,240,240,0.1) 30%, rgba(240,240,240,0.1) 70%, transparent);
     }
-
+ 
     .hero-content {
       display: flex;
       flex-direction: column;
@@ -108,7 +107,7 @@
       padding: 0 64px 60px;
       position: relative;
     }
-
+ 
     .hero-eyebrow {
       font-size: 10px;
       letter-spacing: 5px;
@@ -117,7 +116,7 @@
       margin-bottom: 24px;
       margin-left: 2px;
     }
-
+ 
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(100px, 14vw, 200px);
@@ -133,7 +132,7 @@
       display: block;
       color: rgba(240,240,240,0.15);
     }
-
+ 
     .hero-bottom {
       display: flex;
       justify-content: space-between;
@@ -174,7 +173,7 @@
       0%, 100% { opacity: 0.3; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.5); }
     }
-
+ 
     /* ── SECTION BASE ── */
     section {
       padding: 120px 64px;
@@ -195,7 +194,7 @@
       width: 24px; height: 1px;
       background: rgba(240,240,240,0.2);
     }
-
+ 
     /* ── ABOUT ── */
     #about {}
     .about-body {
@@ -204,7 +203,7 @@
       color: rgba(240,240,240,0.45);
       max-width: 720px;
     }
-
+ 
     /* ── WORK ── */
     #work { padding-bottom: 0; }
     .work-intro {
@@ -219,7 +218,7 @@
       letter-spacing: 0.5px;
       font-style: italic;
     }
-
+ 
     .work-list { border-top: 1px solid var(--border); }
     .work-item {
       display: grid;
@@ -260,11 +259,11 @@
       letter-spacing: 2px;
       text-align: right;
     }
-
+ 
     /* Grid section below list */
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 2px;
       margin-top: 2px;
     }
@@ -334,7 +333,7 @@
       color: rgba(240,240,240,0.45);
       margin-top: 4px;
     }
-
+ 
     /* ── SERVICES ── */
     #services {}
     .services-list { margin-top: 0; }
@@ -373,7 +372,7 @@
       text-align: right;
       padding-top: 4px;
     }
-
+ 
     /* ── CONTACT ── */
     #contact {
       text-align: center;
@@ -434,7 +433,7 @@
       transition: color 0.3s;
     }
     .contact-socials a:hover { color: var(--white); }
-
+ 
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
@@ -446,30 +445,30 @@
       text-transform: uppercase;
       color: rgba(240,240,240,0.15);
     }
-
+ 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       nav { padding: 24px 24px; }
       .logo { font-size: 15px; letter-spacing: 4px; white-space: nowrap; }
       .nav-links { gap: 20px; }
       .nav-links a { font-size: 10px; letter-spacing: 1.5px; }
-
+ 
       #hero { min-height: 100svh; }
       .hero-content { padding: 0 24px 40px; }
       .hero-bottom { padding: 20px 24px 36px; }
       .hero-eyebrow { font-size: 9px; letter-spacing: 3px; }
-
+ 
       section { padding: 72px 24px; }
-
+ 
       .work-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-
+ 
       #contact { padding: 100px 24px; }
       .contact-link { font-size: 11px; padding: 16px 28px; }
       .contact-socials { gap: 28px; }
-
+ 
       footer { padding: 24px 24px; flex-direction: column; gap: 8px; }
     }
-
+ 
     /* ── REVEAL ── */
     .reveal {
       opacity: 0;
@@ -480,7 +479,7 @@
   </style>
 </head>
 <body>
-
+ 
   <!-- NAV -->
   <nav id="nav">
     <a class="logo" href="#">ZEROBACK FILM</a>
@@ -490,12 +489,12 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-
+ 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-vline"></div>
-
+ 
     <div class="hero-content">
       <p class="hero-eyebrow">Music Video Production — Seoul</p>
       <h1 class="hero-title">
@@ -503,7 +502,7 @@
         <span class="outline">BACK</span>
       </h1>
     </div>
-
+ 
     <div class="hero-bottom">
       <div class="hero-scroll-indicator">
         <div class="scroll-dot"></div>
@@ -511,7 +510,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- ABOUT -->
   <section id="about">
     <p class="label reveal">About</p>
@@ -523,13 +522,13 @@
       이미지 너머의 의미를 만들고, 이야기로 기억되는 뮤직비디오를 제작합니다.
     </p>
   </section>
-
+ 
   <!-- WORK -->
   <section id="work">
     <div class="work-intro reveal">
       <p class="label" style="margin-bottom:0">Music Videos</p>
     </div>
-
+ 
     <div class="work-grid reveal">
       <a class="grid-cell" href="https://www.youtube.com/watch?v=tDKjrHeuyOw" target="_blank">
         <img src="https://img.youtube.com/vi/tDKjrHeuyOw/maxresdefault.jpg" alt="FRENZY" />
@@ -559,31 +558,10 @@
           <div class="grid-overlay-meta">CAMO</div>
         </div>
       </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=Ad23TkTfS1A" target="_blank">
-        <img src="https://img.youtube.com/vi/Ad23TkTfS1A/maxresdefault.jpg" alt="LONDON" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-title">LONDON</div>
-          <div class="grid-overlay-meta">LEON</div>
-        </div>
-      </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=KsAwkCQV-lU" target="_blank">
-        <img src="https://img.youtube.com/vi/KsAwkCQV-lU/maxresdefault.jpg" alt="I KNOW" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-title">I KNOW</div>
-          <div class="grid-overlay-meta">GYUN</div>
-        </div>
-      </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=SuomKkNFQnw" target="_blank">
-        <img src="https://zerobackfilm.github.io/ZEROBACKFILM/%EC%98%B90.png" alt="I Want To Be Loved" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-title">I WANT TO BE LOVED</div>
-          <div class="grid-overlay-meta">DIVINE</div>
-        </div>
-      </a>
     </div>
   </section>
-
-
+ 
+ 
   <!-- CONTACT -->
   <section id="contact">
     <ul class="contact-socials reveal">
@@ -591,13 +569,13 @@
       <li><a href="https://www.instagram.com/_fif3r/" target="_blank">@_fif3r</a></li>
     </ul>
   </section>
-
+ 
   <!-- FOOTER -->
   <footer>
     <span>© 2023 Zeroback Film</span>
     <span>Seoul, Republic of Korea</span>
   </footer>
-
+ 
   <script>
     // Thumbnail fallback
     document.querySelectorAll('.grid-cell img').forEach(img => {
@@ -612,7 +590,7 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 80);
     });
-
+ 
     // Reveal
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
@@ -626,3 +604,4 @@
   </script>
 </body>
 </html>
+ 
