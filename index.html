@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZEROBACK FILM</title>
+  <title>ZEROBACK FILM — Portfolio</title>
+  <meta name="description" content="ZEROBACK FILM music video portfolio. Explore selected work and download the portfolio PDF." />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,200;0,300;0,400;1,200&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -498,6 +499,35 @@
       transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
     }
     .reveal.up { transform: translateY(0); opacity: 1; }
+
+    /* Portfolio PDF */
+    .portfolio-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      min-height: 44px;
+      padding: 14px 22px;
+      border: 1px solid rgba(240,240,240,0.35);
+      color: var(--white);
+      font-size: 10px;
+      line-height: 1.4;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+    .portfolio-download:hover { background: var(--white); color: var(--black); }
+    .portfolio-download:focus-visible, .hero-scroll-indicator:focus-visible {
+      outline: 2px solid var(--white);
+      outline-offset: 6px;
+    }
+    .hero-scroll-indicator { text-decoration: none; min-height: 44px; }
+    @media (max-width: 480px) {
+      .hero-bottom { gap: 16px; align-items: center; }
+      .portfolio-download { padding: 12px 14px; gap: 14px; font-size: 9px; letter-spacing: 1px; }
+      .hero-scroll-indicator { gap: 8px; font-size: 9px; letter-spacing: 1px; }
+    }
   </style>
 </head>
 <body>
@@ -526,10 +556,11 @@
     </div>
 
     <div class="hero-bottom">
-      <div class="hero-scroll-indicator">
-        <div class="scroll-dot"></div>
-        <span>Scroll</span>
-      </div>
+      <a class="hero-scroll-indicator" href="#work">
+        <span class="scroll-dot" aria-hidden="true"></span>
+        <span>View work</span>
+      </a>
+      <a class="portfolio-download" href="assets/portfolio/ZEROBACKFILM-Portfolio.pdf" download="ZEROBACKFILM-Portfolio.pdf" aria-label="Download ZEROBACK FILM portfolio PDF, 12 pages"><span>Portfolio PDF</span><span aria-hidden="true">↓</span></a>
     </div>
   </section>
 
@@ -644,6 +675,7 @@
   <!-- CONTACT -->
   <section id="contact">
     <p class="label reveal">Contact</p>
+    <a class="portfolio-download" href="assets/portfolio/ZEROBACKFILM-Portfolio.pdf" download="ZEROBACKFILM-Portfolio.pdf" aria-label="Download ZEROBACK FILM portfolio PDF, 12 pages"><span>Portfolio PDF</span><span aria-hidden="true">↓</span></a>
     <ul class="contact-socials reveal">
       <li><a href="tel:01062504093">010-6250-4093</a></li>
       <li><a href="https://www.instagram.com/_fif3r/" target="_blank">@_fif3r</a></li>
