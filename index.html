@@ -1,750 +1,137 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZEROBACK FILM — Portfolio</title>
-  <meta name="description" content="ZEROBACK FILM music video portfolio. Explore selected work and download the portfolio PDF." />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,200;0,300;0,400;1,200&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SELECTED WORKS | DIR. JEON WOOJIN</title>
+  <meta name="description" content="Selected films and music videos by director Jeon Woojin. Watch the work and download the portfolio." />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black: #080808;
-      --white: #f0f0f0;
-      --gray: #999;
-      --border: rgba(240,240,240,0.08);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    /* ── GRAIN OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.03;
-      pointer-events: none;
-      z-index: 1000;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 32px 64px;
-      transition: background 0.5s, padding 0.4s;
-    }
-    nav.scrolled {
-      background: rgba(8,8,8,0.95);
-      backdrop-filter: blur(20px);
-      padding: 20px 64px;
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      letter-spacing: 6px;
-      color: var(--white);
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 48px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: rgba(240,240,240,0.45);
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--white); }
-
-    /* ── HERO ── */
-    #hero {
-      height: 100vh;
-      min-height: 700px;
-      display: grid;
-      grid-template-rows: 1fr auto;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Hero background */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-    }
-
-    /* Vertical divider line */
-    .hero-vline {
-      position: absolute;
-      left: 64px;
-      top: 0; bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(240,240,240,0.1) 30%, rgba(240,240,240,0.1) 70%, transparent);
-    }
-
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 64px 60px;
-      position: relative;
-    }
-
-    .hero-eyebrow {
-      font-size: 10px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: rgba(240,240,240,0.3);
-      margin-bottom: 24px;
-      margin-left: 2px;
-    }
-
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(100px, 14vw, 200px);
-      line-height: 0.88;
-      letter-spacing: -1px;
-      position: relative;
-    }
-    .hero-title .filled {
-      color: var(--white);
-      display: block;
-    }
-    .hero-title .outline {
-      display: block;
-      color: rgba(240,240,240,0.15);
-    }
-
-    .hero-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding: 32px 64px 52px;
-      position: relative;
-      border-top: 1px solid var(--border);
-    }
-    .hero-desc {
-      font-size: 12px;
-      line-height: 2;
-      color: rgba(240,240,240,0.4);
-      letter-spacing: 0.5px;
-      max-width: 280px;
-    }
-    .hero-year {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 13px;
-      letter-spacing: 4px;
-      color: rgba(240,240,240,0.2);
-    }
-    .hero-scroll-indicator {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(240,240,240,0.3);
-    }
-    .scroll-dot {
-      width: 4px; height: 4px;
-      background: rgba(240,240,240,0.3);
-      border-radius: 50%;
-      animation: pulse 2s ease infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.5); }
-    }
-
-    /* ── SECTION BASE ── */
-    section {
-      padding: 120px 64px;
-      border-top: 1px solid var(--border);
-    }
-    .label {
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(240,240,240,0.25);
-      margin-bottom: 64px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .label::before {
-      content: '';
-      width: 24px; height: 1px;
-      background: rgba(240,240,240,0.2);
-    }
-
-    /* ── ABOUT ── */
-    #about {}
-    .about-body {
-      font-size: 14px;
-      line-height: 2.4;
-      color: rgba(240,240,240,0.45);
-      max-width: 720px;
-    }
-
-    /* ── WORK ── */
-    #work { padding-bottom: 0; }
-    .work-intro {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 48px;
-    }
-    .work-note {
-      font-size: 12px;
-      color: rgba(240,240,240,0.3);
-      letter-spacing: 0.5px;
-      font-style: italic;
-    }
-
-    .work-list { border-top: 1px solid var(--border); }
-    .work-item {
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr auto;
-      align-items: center;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--border);
-      cursor: pointer;
-      transition: padding 0.3s;
-      gap: 40px;
-      text-decoration: none;
-      color: var(--white);
-    }
-    .work-item:hover {
-      padding-left: 12px;
-    }
-    .work-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 13px;
-      letter-spacing: 3px;
-      color: rgba(240,240,240,0.2);
-    }
-    .work-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      letter-spacing: 1px;
-      transition: letter-spacing 0.3s;
-    }
-    .work-item:hover .work-name { letter-spacing: 2px; }
-    .work-artist {
-      font-size: 12px;
-      color: rgba(240,240,240,0.4);
-      letter-spacing: 1px;
-    }
-    .work-year {
-      font-size: 12px;
-      color: rgba(240,240,240,0.25);
-      letter-spacing: 2px;
-      text-align: right;
-    }
-
-    /* Grid section below list */
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      margin-top: 2px;
-    }
-    .grid-cell {
-      aspect-ratio: 16/9;
-      background: #111;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    .grid-cell-label {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 11px;
-      letter-spacing: 3px;
-      color: rgba(240,240,240,0.1);
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 2;
-    }
-    .grid-cell-inner {
-      text-align: center;
-    }
-    .grid-cell-sub {
-      font-size: 9px;
-      letter-spacing: 2px;
-      color: rgba(240,240,240,0.05);
-      text-transform: uppercase;
-      margin-top: 8px;
-    }
-    .grid-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.88) 0%, transparent 55%);
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding: 24px;
-      opacity: 0;
-      transition: opacity 0.35s;
-    }
-    .grid-overlay-right {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(240,240,240,0.35);
-      text-align: right;
-    }
-    .grid-cell:hover .grid-overlay,
-    .grid-cell.touch-active .grid-overlay { opacity: 1; }
-    .grid-cell.touch-active img { transform: scale(1.04); }
-    .grid-cell img { display: block; }
-    .grid-cell img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    .grid-cell:hover img {
-      transform: scale(1.04);
-    }
-    .grid-overlay-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px;
-      letter-spacing: 1.5px;
-      color: var(--white);
-    }
-    .grid-overlay-meta {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(240,240,240,0.45);
-      margin-top: 4px;
-    }
-
-    /* ── SERVICES ── */
-    #services {}
-    .services-list { margin-top: 0; }
-    .service-row {
-      display: grid;
-      grid-template-columns: 60px 200px 1fr 120px;
-      align-items: start;
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
-      gap: 40px;
-    }
-    .service-row:first-child { border-top: 1px solid var(--border); }
-    .svc-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 13px;
-      letter-spacing: 3px;
-      color: rgba(240,240,240,0.2);
-      padding-top: 4px;
-    }
-    .svc-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      letter-spacing: 0.5px;
-      line-height: 1;
-    }
-    .svc-desc {
-      font-size: 13px;
-      line-height: 2;
-      color: rgba(240,240,240,0.4);
-    }
-    .svc-tag {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(240,240,240,0.2);
-      text-align: right;
-      padding-top: 4px;
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      text-align: center;
-      padding: 160px 64px;
-    }
-    .contact-pre {
-      font-size: 10px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: rgba(240,240,240,0.25);
-      margin-bottom: 40px;
-    }
-    .contact-big {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(56px, 9vw, 130px);
-      line-height: 0.9;
-      letter-spacing: 1px;
-      margin-bottom: 56px;
-    }
-    .contact-big .stroke {
-      -webkit-text-stroke: 1px rgba(240,240,240,0.2);
-      color: transparent;
-      display: block;
-    }
-    .contact-big .solid {
-      color: var(--white);
-      display: block;
-    }
-    .contact-link {
-      display: inline-block;
-      font-size: 13px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      padding: 18px 48px;
-      border: 1px solid rgba(240,240,240,0.2);
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .contact-link:hover {
-      background: var(--white);
-      color: var(--black);
-      border-color: var(--white);
-    }
-    .contact-socials {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      margin-top: 64px;
-      list-style: none;
-    }
-    .contact-socials a {
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(240,240,240,0.25);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .contact-socials a:hover { color: var(--white); }
-
-    #contact .label {
-      justify-content: center;
-    }
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 64px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(240,240,240,0.15);
-    }
-    #contact .label {
-      justify-content: center;
-    }
-
-    /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      nav { padding: 24px 24px; }
-      .logo { font-size: 15px; letter-spacing: 4px; white-space: nowrap; }
-      .nav-links { gap: 20px; }
-      .nav-links a { font-size: 10px; letter-spacing: 1.5px; }
-
-      #hero { min-height: 100svh; }
-      .hero-content { padding: 0 24px 40px; }
-      .hero-bottom { padding: 20px 24px 36px; }
-      .hero-eyebrow { font-size: 9px; letter-spacing: 3px; }
-
-      section { padding: 72px 24px; }
-
-      .work-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-
-      #contact { padding: 100px 24px; }
-      .contact-link { font-size: 11px; padding: 16px 28px; }
-      .contact-socials {
-        gap: 16px;
-        flex-wrap: nowrap;
-        margin-top: 40px;
-        justify-content: center;
-        align-items: center;
-      }
-      .contact-socials a { font-size: 8px; letter-spacing: 1.5px; white-space: nowrap; }
-
-      footer { padding: 24px 24px; flex-direction: column; gap: 8px; }
-    }
-
-    /* ── REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
-    }
-    .reveal.up { transform: translateY(0); opacity: 1; }
-
-    /* Portfolio PDF */
-    .portfolio-download {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      min-height: 44px;
-      padding: 14px 22px;
-      border: 1px solid rgba(240,240,240,0.35);
-      color: var(--white);
-      font-size: 10px;
-      line-height: 1.4;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: color 0.2s, background 0.2s;
-    }
-    .portfolio-download:hover { background: var(--white); color: var(--black); }
-    .portfolio-download:focus-visible, .hero-scroll-indicator:focus-visible {
-      outline: 2px solid var(--white);
-      outline-offset: 6px;
-    }
-    .hero-scroll-indicator { text-decoration: none; min-height: 44px; }
-    @media (max-width: 480px) {
-      nav, nav.scrolled { padding: 20px 24px; }
-      .logo { font-size: 14px; letter-spacing: 3px; }
-      .nav-links { gap: 16px; }
-      .nav-links a { font-size: 9px; letter-spacing: 1px; }
-      .hero-bottom { gap: 16px; align-items: center; }
-      .portfolio-download { padding: 12px 14px; gap: 14px; font-size: 9px; letter-spacing: 1px; }
-      .hero-scroll-indicator { gap: 8px; font-size: 9px; letter-spacing: 1px; }
-    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 32px; }
+    body { margin: 0; background: #0a0a0a; color: #f1f0ed; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 1px solid #f1f0ed; outline-offset: 7px; }
+    a:hover { color: #fff; }
+    .skip { position: absolute; top: -100px; left: 24px; z-index: 10; padding: 12px; background: #0a0a0a; }
+    .skip:focus { top: 12px; }
+    .site-header { position: absolute; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 42px 64px; z-index: 2; }
+    .identity { font-size: 11px; font-weight: 400; letter-spacing: 1.1px; white-space: nowrap; }
+    nav { display: flex; gap: 32px; }
+    nav a { min-height: 44px; display: inline-flex; align-items: center; font-size: 10px; letter-spacing: 1px; color: #a0a09c; }
+    #hero { min-height: 100svh; min-height: 100vh; padding: 172px 64px 48px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+    .hero-title { margin: auto 0; padding: 42px 0 90px; font-size: clamp(64px, 10.5vw, 144px); font-weight: 400; line-height: .99; letter-spacing: -.055em; }
+    .hero-title span { display: block; }
+    .hero-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .hero-note, .pdf-link { font-size: 10px; font-weight: 400; letter-spacing: 1px; color: #a0a09c; line-height: 1.6; }
+    .hero-note { margin: 0; }
+    .pdf-link { min-height: 44px; display: inline-flex; align-items: center; border-bottom: 1px solid #41413e; }
+    #work { max-width: 1600px; margin: 0 auto; padding: 96px 64px 136px; }
+    .section-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .section-heading h2 { font-size: 11px; font-weight: 400; letter-spacing: 1px; margin: 0; }
+    .section-heading span { color: #a0a09c; font-size: 10px; }
+    .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 72px 40px; }
+    .grid-cell { min-width: 0; display: block; }
+    .grid-cell img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: contain; background: #0a0a0a; }
+    .work-caption { margin-top: 18px; }
+    .work-title { margin: 0; font-size: 11px; font-weight: 400; line-height: 1.5; letter-spacing: .25px; }
+    .work-artist { margin: 6px 0 0; font-size: 10px; color: #a0a09c; line-height: 1.6; }
+    #contact { margin: 0 64px; padding: 84px 0 112px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-top: 1px solid #242422; }
+    #contact h2 { margin: 0; font-size: 11px; font-weight: 400; letter-spacing: 1px; }
+    .contact-details { display: flex; align-items: flex-start; flex-direction: column; gap: 12px; }
+    .contact-email { font-size: clamp(16px, 2vw, 24px); line-height: 1.5; margin-bottom: 12px; overflow-wrap: anywhere; }
+    .contact-details > a:not(.contact-email) { font-size: 11px; color: #a0a09c; min-height: 32px; display: inline-flex; align-items: center; }
+    .contact-details .pdf-link { margin-top: 24px; }
+    footer { padding: 0 64px 36px; display: flex; justify-content: space-between; gap: 24px; font-size: 8px; letter-spacing: .8px; color: #a0a09c; }
+    @supports (min-height: 100svh) { #hero { min-height: 100svh; } }
+    @media (max-width: 680px) {
+      .site-header { padding: 24px; gap: 16px; }
+      .identity { font-size: 9px; letter-spacing: .6px; }
+      nav { gap: 20px; }
+      nav a { font-size: 9px; letter-spacing: .5px; }
+      #hero { padding: 124px 24px 32px; }
+      .hero-title { padding: 48px 0 72px; font-size: clamp(48px, 15vw, 96px); }
+      .hero-note, .pdf-link { font-size: 8px; letter-spacing: .55px; }
+      #work { padding: 72px 24px 96px; }
+      .work-grid { grid-template-columns: 1fr; gap: 44px; }
+      .section-heading { margin-bottom: 28px; }
+      .work-caption { margin-top: 14px; }
+      #contact { margin: 0 24px; padding: 56px 0 72px; grid-template-columns: 1fr; gap: 36px; }
+      footer { padding: 0 24px 28px; font-size: 7px; gap: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
-  <nav id="nav">
-    <a class="logo" href="#">ZEROBACK FILM</a>
-    <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-vline"></div>
-
-    <div class="hero-content">
-      <p class="hero-eyebrow">Music Video Production — Seoul</p>
-      <h1 class="hero-title">
-        <span class="filled">ZERO</span>
-        <span class="outline">BACK</span>
-      </h1>
-    </div>
-
-    <div class="hero-bottom">
-      <a class="hero-scroll-indicator" href="#work">
-        <span class="scroll-dot" aria-hidden="true"></span>
-        <span>View work</span>
+  <a class="skip" href="#work">Skip to selected works</a>
+  <header class="site-header">
+    <a class="identity" href="#hero">DIR. JEON WOOJIN</a>
+    <nav aria-label="Main navigation"><a href="#work">WORKS</a><a href="#contact">CONTACT</a></nav>
+  </header>
+  <main>
+    <section id="hero" aria-label="Selected works cover">
+      <h1 class="hero-title"><span>SELECTED</span><span>WORKS</span></h1>
+      <div class="hero-bottom"><p class="hero-note">FILM / MUSIC VIDEO</p><a class="pdf-link" href="assets/portfolio/JEON-WOOJIN-Selected-Works.pdf" download="JEON-WOOJIN-Selected-Works.pdf" aria-label="Download DIR. JEON WOOJIN selected works PDF, 12 pages">DOWNLOAD PDF</a></div>
+    </section>
+    <section id="work" aria-labelledby="works-heading">
+      <div class="section-heading"><h2 id="works-heading">WORKS</h2><span>01 - 09</span></div>
+      <div class="work-grid">
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=tDKjrHeuyOw" target="_blank" rel="noopener noreferrer" aria-label="Watch FRENZY by CHOCO 1&amp;2">
+        <img src="https://img.youtube.com/vi/tDKjrHeuyOw/maxresdefault.jpg" alt="FRENZY" width="1280" height="720" loading="lazy" decoding="async" />
+        <div class="work-caption"><h3 class="work-title">FRENZY</h3><p class="work-artist">CHOCO 1&amp;2</p></div>
       </a>
-      <a class="portfolio-download" href="assets/portfolio/ZEROBACKFILM-Portfolio.pdf" download="ZEROBACKFILM-Portfolio.pdf" aria-label="Download ZEROBACK FILM portfolio PDF, 12 pages"><span>Portfolio PDF</span><span aria-hidden="true">↓</span></a>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <p class="label reveal">About</p>
-    <p class="about-body reveal">
-      ZEROBACK FILM은 단순히 아름다운 이미지를 나열하는 영상을 만들지 않습니다.<br /><br />
-      견고한 기획을 기반으로, 시각적 완성도와 이야기의 재미를 함께 설계합니다.<br />
-      상업적 목적과 예술적 가치를 균형 있게 담아내며,<br />
-      한 편의 영상이 브랜드와 아티스트의 메시지를 더욱 강렬하게 전달할 수 있도록 연출합니다.<br /><br />
-      이미지 너머의 의미를 만들고, 이야기로 기억되는 뮤직비디오를 제작합니다.
-    </p>
-  </section>
-
-  <!-- WORK -->
-  <section id="work">
-    <div class="work-intro reveal">
-      <p class="label" style="margin-bottom:0">Music Videos</p>
-    </div>
-
-    <div class="work-grid reveal">
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=tDKjrHeuyOw" target="_blank">
-        <img src="https://img.youtube.com/vi/tDKjrHeuyOw/maxresdefault.jpg" alt="FRENZY" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-left">
-            <div class="grid-overlay-title">FRENZY</div>
-            <div class="grid-overlay-meta">CHOCO 1&amp;2</div>
-          </div>
-          <div class="grid-overlay-right">DIRECTED BY ZEROBACK</div>
-        </div>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=pIfScZGDNsc" target="_blank" rel="noopener noreferrer" aria-label="Watch GIMME by CHOCO 1&amp;2">
+        <img src="https://img.youtube.com/vi/pIfScZGDNsc/maxresdefault.jpg" alt="GIMME" width="1280" height="720" loading="lazy" decoding="async" />
+        <div class="work-caption"><h3 class="work-title">GIMME</h3><p class="work-artist">CHOCO 1&amp;2</p></div>
       </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=pIfScZGDNsc" target="_blank">
-        <img src="https://img.youtube.com/vi/pIfScZGDNsc/maxresdefault.jpg" alt="GIMME" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-left">
-            <div class="grid-overlay-title">GIMME</div>
-            <div class="grid-overlay-meta">CHOCO 1&amp;2</div>
-          </div>
-          <div class="grid-overlay-right">DIRECTED BY ZEROBACK</div>
-        </div>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=NCuFonpf-qk" target="_blank" rel="noopener noreferrer" aria-label="Watch RIZZ by XLOV">
+        <img src="https://img.youtube.com/vi/NCuFonpf-qk/maxresdefault.jpg" alt="RIZZ" width="1280" height="720" loading="lazy" decoding="async" />
+        <div class="work-caption"><h3 class="work-title">RIZZ</h3><p class="work-artist">XLOV</p></div>
       </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=NCuFonpf-qk" target="_blank">
-        <img src="https://img.youtube.com/vi/NCuFonpf-qk/maxresdefault.jpg" alt="RIZZ" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-left">
-            <div class="grid-overlay-title">RIZZ</div>
-            <div class="grid-overlay-meta">XLOV</div>
-          </div>
-          <div class="grid-overlay-right">DIRECTED BY ZEROBACK</div>
-        </div>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=b7-vel_KNAc" target="_blank" rel="noopener noreferrer" aria-label="Watch SECRET by CAMO">
+        <img src="https://img.youtube.com/vi/b7-vel_KNAc/maxresdefault.jpg" alt="SECRET" width="1280" height="720" loading="lazy" decoding="async" />
+        <div class="work-caption"><h3 class="work-title">SECRET</h3><p class="work-artist">CAMO</p></div>
       </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=b7-vel_KNAc" target="_blank">
-        <img src="https://img.youtube.com/vi/b7-vel_KNAc/maxresdefault.jpg" alt="SECRET" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-left">
-            <div class="grid-overlay-title">SECRET</div>
-            <div class="grid-overlay-meta">CAMO</div>
-          </div>
-          <div class="grid-overlay-right">DIRECTED BY ZEROBACK</div>
-        </div>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=KsAwkCQV-lU" target="_blank" rel="noopener noreferrer" aria-label="Watch I KNOW by GYUN">
+        <img src="assets/thumbnails/i-know.jpg" alt="I KNOW" width="1280" height="720" loading="lazy" decoding="async" />
+        <div class="work-caption"><h3 class="work-title">I KNOW</h3><p class="work-artist">GYUN</p></div>
       </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=KsAwkCQV-lU" target="_blank" rel="noopener noreferrer">
-        <img src="assets/thumbnails/i-know.jpg" alt="I KNOW" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-left">
-            <div class="grid-overlay-title">I KNOW</div>
-            <div class="grid-overlay-meta">GYUN</div>
-          </div>
-        </div>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=SuomKkNFQnw" target="_blank" rel="noopener noreferrer" aria-label="Watch I WANT TO BE LOVED by DIVINE">
+        <img src="assets/thumbnails/i-want-to-be-loved.jpg" alt="I WANT TO BE LOVED" width="1280" height="720" loading="lazy" decoding="async" />
+        <div class="work-caption"><h3 class="work-title">I WANT TO BE LOVED</h3><p class="work-artist">DIVINE</p></div>
       </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=SuomKkNFQnw" target="_blank" rel="noopener noreferrer">
-        <img src="assets/thumbnails/i-want-to-be-loved.jpg" alt="I WANT TO BE LOVED" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-left">
-            <div class="grid-overlay-title">I WANT TO BE LOVED</div>
-            <div class="grid-overlay-meta">DIVINE</div>
-          </div>
-        </div>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=xldY7xZUmwI" target="_blank" rel="noopener noreferrer" aria-label="Watch LAST NIGHT&#x27;S DREAM by HENA">
+        <img src="https://img.youtube.com/vi/xldY7xZUmwI/maxresdefault.jpg" alt="LAST NIGHT&#x27;S DREAM" width="1280" height="720" loading="lazy" decoding="async" />
+        <div class="work-caption"><h3 class="work-title">LAST NIGHT&#x27;S DREAM</h3><p class="work-artist">HENA</p></div>
       </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=xldY7xZUmwI" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.youtube.com/vi/xldY7xZUmwI/maxresdefault.jpg" alt="LAST NIGHT'S DREAM" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-left">
-            <div class="grid-overlay-title">LAST NIGHT'S DREAM</div>
-            <div class="grid-overlay-meta">HENA</div>
-          </div>
-        </div>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=O4o-ooySCUw" target="_blank" rel="noopener noreferrer" aria-label="Watch REMINISCENCE by ARON">
+        <img src="assets/thumbnails/hoisang.jpg" alt="REMINISCENCE" width="1280" height="720" loading="lazy" decoding="async" />
+        <div class="work-caption"><h3 class="work-title">REMINISCENCE</h3><p class="work-artist">ARON</p></div>
       </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=O4o-ooySCUw" target="_blank" rel="noopener noreferrer">
-        <img src="assets/thumbnails/hoisang.jpg" alt="REMINISCENCE" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-left">
-            <div class="grid-overlay-title">REMINISCENCE</div>
-            <div class="grid-overlay-meta">ARON</div>
-          </div>
-        </div>
+      <a class="grid-cell" href="https://www.youtube.com/watch?v=9CsUWavWaGU" target="_blank" rel="noopener noreferrer" aria-label="Watch COURAGE AND LIBERATION by SALT &amp; CHOCOLATE">
+        <img src="https://img.youtube.com/vi/9CsUWavWaGU/maxresdefault.jpg" alt="COURAGE AND LIBERATION" width="1280" height="720" loading="lazy" decoding="async" />
+        <div class="work-caption"><h3 class="work-title">COURAGE AND LIBERATION</h3><p class="work-artist">SALT &amp; CHOCOLATE</p></div>
       </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=9CsUWavWaGU" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.youtube.com/vi/9CsUWavWaGU/maxresdefault.jpg" alt="COURAGE AND LIBERATION" />
-        <div class="grid-overlay">
-          <div class="grid-overlay-left">
-            <div class="grid-overlay-title">COURAGE AND LIBERATION</div>
-            <div class="grid-overlay-meta">SALT &amp; CHOCOLATE</div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <p class="label reveal">Contact</p>
-    <a class="portfolio-download" href="assets/portfolio/ZEROBACKFILM-Portfolio.pdf" download="ZEROBACKFILM-Portfolio.pdf" aria-label="Download ZEROBACK FILM portfolio PDF, 12 pages"><span>Portfolio PDF</span><span aria-hidden="true">↓</span></a>
-    <ul class="contact-socials reveal">
-      <li><a href="tel:01062504093">010-6250-4093</a></li>
-      <li><a href="https://www.instagram.com/_fif3r/" target="_blank">@_fif3r</a></li>
-      <li><a href="mailto:zeroback0film@gmail.com">zeroback0film@gmail.com</a></li>
-    </ul>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <span>© 2023 Zeroback Film</span>
-    <span>Seoul, Republic of Korea</span>
-  </footer>
-
+      </div>
+    </section>
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">CONTACT</h2>
+      <div class="contact-details">
+        <a class="contact-email" href="mailto:zeroback0film@gmail.com">zeroback0film@gmail.com</a>
+        <a href="tel:+821062504093">010-6250-4093</a>
+        <a href="https://www.instagram.com/_fif3r/" target="_blank" rel="noopener noreferrer">@_fif3r</a>
+        <a class="pdf-link" href="assets/portfolio/JEON-WOOJIN-Selected-Works.pdf" download="JEON-WOOJIN-Selected-Works.pdf" aria-label="Download DIR. JEON WOOJIN selected works PDF, 12 pages">DOWNLOAD PDF</a>
+      </div>
+    </section>
+  </main>
+  <footer><span>DIR. JEON WOOJIN</span><span>SEOUL, REPUBLIC OF KOREA</span></footer>
   <script>
-    // Thumbnail fallback
     document.querySelectorAll('.grid-cell img').forEach(img => {
-      img.onerror = function() {
+      img.onerror = function () {
         this.onerror = null;
-        const videoLink = this.closest('.grid-cell');
-        const id = videoLink && new URL(videoLink.href).searchParams.get('v');
+        const id = new URL(this.closest('a').href).searchParams.get('v');
         if (id) this.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
       };
     });
-    // Navbar
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 80);
-    });
-
-    // Reveal
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('up'), i * 100);
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    // Mobile touch overlay
-    if ('ontouchstart' in window) {
-      document.querySelectorAll('.grid-cell').forEach(cell => {
-        cell.addEventListener('touchstart', function(e) {
-          const isActive = this.classList.contains('touch-active');
-          document.querySelectorAll('.grid-cell').forEach(c => c.classList.remove('touch-active'));
-          if (!isActive) {
-            e.preventDefault();
-            this.classList.add('touch-active');
-          }
-        }, { passive: false });
-
-        cell.addEventListener('click', function(e) {
-          if (!this.classList.contains('touch-active')) {
-            e.preventDefault();
-          }
-        });
-      });
-
-      document.addEventListener('touchstart', function(e) {
-        if (!e.target.closest('.grid-cell')) {
-          document.querySelectorAll('.grid-cell').forEach(c => c.classList.remove('touch-active'));
-        }
-      });
-    }
   </script>
 </body>
 </html>
