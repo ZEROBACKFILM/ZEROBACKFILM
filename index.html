@@ -593,7 +593,7 @@
         </div>
       </a>
       <a class="grid-cell" href="https://www.youtube.com/watch?v=KsAwkCQV-lU" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.youtube.com/vi/KsAwkCQV-lU/maxresdefault.jpg" alt="I KNOW" />
+        <img src="assets/thumbnails/i-know.jpg" alt="I KNOW" />
         <div class="grid-overlay">
           <div class="grid-overlay-left">
             <div class="grid-overlay-title">I KNOW</div>
@@ -602,7 +602,7 @@
         </div>
       </a>
       <a class="grid-cell" href="https://www.youtube.com/watch?v=SuomKkNFQnw" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.youtube.com/vi/SuomKkNFQnw/hqdefault.jpg" alt="I WANT TO BE LOVED" />
+        <img src="assets/thumbnails/i-want-to-be-loved.jpg" alt="I WANT TO BE LOVED" />
         <div class="grid-overlay">
           <div class="grid-overlay-left">
             <div class="grid-overlay-title">I WANT TO BE LOVED</div>
@@ -620,7 +620,7 @@
         </div>
       </a>
       <a class="grid-cell" href="https://www.youtube.com/watch?v=O4o-ooySCUw" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.youtube.com/vi/O4o-ooySCUw/maxresdefault.jpg" alt="회상" />
+        <img src="assets/thumbnails/hoisang.jpg" alt="회상" />
         <div class="grid-overlay">
           <div class="grid-overlay-left">
             <div class="grid-overlay-title">회상</div>
@@ -660,9 +660,10 @@
     // Thumbnail fallback
     document.querySelectorAll('.grid-cell img').forEach(img => {
       img.onerror = function() {
-        const id = this.src.match(/vi\/([^/]+)\//)[1];
-        this.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
         this.onerror = null;
+        const videoLink = this.closest('.grid-cell');
+        const id = videoLink && new URL(videoLink.href).searchParams.get('v');
+        if (id) this.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
       };
     });
     // Navbar
