@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>첫 페이지 편집 — JEON WOOJIN</title>
+ <link rel="icon" href="favicon.svg" type="image/svg+xml">
+ <link rel="stylesheet" href="editor.css">
+ <script src="cover-config.js" defer></script><script src="cover-design.js" defer></script>
+ <script src="portfolio-files.js?v=final-review-1" defer></script><script src="editor.js?v=final-review-1" defer></script>
+</head>
+<body>
+ <header class="toolbar"><div><span class="eyebrow">JEON WOOJIN / FILMOGRAPHY</span><h1>첫 페이지 편집</h1></div><a class="view-link" href="index.html#home" target="_blank" rel="noopener">홈페이지 보기 ↗</a></header>
+ <main class="workspace">
+  <section class="preview-area" aria-label="첫 페이지 미리보기">
+   <div class="preview-label"><span>LIVE PREVIEW</span><span>1920 × 1080</span></div>
+   <div class="preview-stage"><iframe id="cover-preview" title="첫 페이지 실시간 미리보기" sandbox="allow-same-origin"></iframe></div>
+   <p id="layout-note" class="preview-note">오른쪽에서 조절하면 바로 반영돼요.</p>
+   <p class="preview-note">DIRECTOR · FILMOGRAPHY — ROBOTO CONDENSED / EXTRA BOLD</p>
+  </section>
+  <aside class="controls" aria-label="첫 페이지 편집 도구">
+   <form id="cover-form">
+    <fieldset><legend>문구</legend>
+     <label>상단 문구<input name="role" value="DIRECTOR" maxlength="80"></label>
+     <label>메인 제목<input name="title" value="FILMOGRAPHY" maxlength="80"></label>
+     <div class="two"><label>하단 이름<input name="name" value="JEON WOOJIN" maxlength="80"></label><label>페이지 번호<input name="page" value="01" maxlength="8"></label></div>
+     <label>하단 안내 문구<input name="explore" value="EXPLORE THE FILMS" maxlength="80"></label>
+     <label class="check"><input name="arrow" type="checkbox" checked> 아래 화살표 표시</label>
+    </fieldset>
+    <fieldset><legend>크기와 위치</legend><p class="hint">글자 크기·간격은 1920×1080 기준이에요.</p>
+     <div class="two"><label>메인 제목 크기<input name="titleSize" type="number" min="40" max="420" step="0.1"></label><label>상단 문구 크기<input name="roleSize" type="number" min="12" max="200" step="0.1"></label></div>
+     <button class="subtle" id="third-size" type="button">상단 문구를 제목의 ⅓로 맞추기</button>
+     <div class="two"><label>왼쪽 여백 (%)<input name="left" type="number" min="0" max="50" step="any"></label><label>제목 높이 (%)<input name="top" type="number" min="15" max="85" step="1"></label></div>
+     <div class="two"><label>두 문구 사이 간격<input name="gap" type="number" min="0" max="160" step="1"></label><label>상단 문구 불투명도 (%)<input name="opacity" type="number" min="0" max="100" step="1"></label></div>
+    </fieldset>
+    <fieldset><legend>색상</legend><div class="two"><label>첫 페이지 배경<input name="background" type="color" value="#0a0a0a"></label><label>글자색<input name="color" type="color" value="#f3f2ee"></label></div></fieldset>
+   </form>
+   <div class="actions"><button id="save" class="primary" type="button">저장</button><button id="download" type="button">수정본 ZIP 받기 ↓</button><button id="reset" class="subtle" type="button">처음 상태로 되돌리기</button><p id="status" role="status" aria-live="polite">저장하면 이 브라우저의 홈페이지에 반영돼요.</p><p class="hint">다른 기기에서 쓰거나 전달하려면 수정본 ZIP을 내려받으세요. 2페이지 이후는 그대로 유지돼요.</p></div>
+  </aside>
+ </main>
+</body></html>

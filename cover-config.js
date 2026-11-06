@@ -1,0 +1,1 @@
+window.JWCoverConfig = {"revision":"cover-editor-01","role":"DIRECTOR","title":"FILMOGRAPHY","name":"JEON WOOJIN","explore":"EXPLORE THE FILMS","page":"01","titleSize":254.4,"roleSize":84.8,"left":4.1667,"top":43,"gap":0,"opacity":15,"background":"#0a0a0a","color":"#f3f2ee","arrow":true};

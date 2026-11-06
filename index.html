@@ -1,136 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FILMOGRAPHY | DIR. JEON WOOJIN</title>
-  <meta name="description" content="Film and music video portfolio of director Jeon Woojin. Watch the work and download the portfolio." />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 32px; }
-    body { margin: 0; background: #0a0a0a; color: #f1f0ed; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible { outline: 1px solid #f1f0ed; outline-offset: 7px; }
-    a:hover { color: #fff; }
-    .skip { position: absolute; top: -100px; left: 24px; z-index: 10; padding: 12px; background: #0a0a0a; }
-    .skip:focus { top: 12px; }
-    .site-header { position: absolute; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 42px 64px; z-index: 2; }
-    .identity { font-size: 11px; font-weight: 400; letter-spacing: 1.1px; white-space: nowrap; }
-    nav { display: flex; gap: 32px; }
-    nav a { min-height: 44px; display: inline-flex; align-items: center; font-size: 10px; letter-spacing: 1px; color: #a0a09c; }
-    #hero { min-height: 100svh; min-height: 100vh; padding: 172px 64px 48px; display: flex; flex-direction: column; justify-content: center; position: relative; }
-    .hero-title { margin: auto 0; padding: 42px 0 90px; font-size: clamp(48px, 7vw, 96px); font-weight: 400; line-height: 1.05; letter-spacing: -.04em; }
-    .hero-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .hero-note, .pdf-link { font-size: 10px; font-weight: 400; letter-spacing: 1px; color: #a0a09c; line-height: 1.6; }
-    .hero-note { margin: 0; }
-    .pdf-link { min-height: 44px; display: inline-flex; align-items: center; border-bottom: 1px solid #41413e; }
-    #work { max-width: 1600px; margin: 0 auto; padding: 96px 64px 136px; }
-    .section-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-    .section-heading h2 { font-size: 11px; font-weight: 400; letter-spacing: 1px; margin: 0; }
-    .section-heading span { color: #a0a09c; font-size: 10px; }
-    .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 72px 40px; }
-    .grid-cell { min-width: 0; display: block; }
-    .grid-cell img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: contain; background: #0a0a0a; }
-    .work-caption { margin-top: 18px; }
-    .work-title { margin: 0; font-size: 11px; font-weight: 400; line-height: 1.5; letter-spacing: .25px; }
-    .work-artist { margin: 6px 0 0; font-size: 10px; color: #a0a09c; line-height: 1.6; }
-    #contact { margin: 0 64px; padding: 84px 0 112px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-top: 1px solid #242422; }
-    #contact h2 { margin: 0; font-size: 11px; font-weight: 400; letter-spacing: 1px; }
-    .contact-details { display: flex; align-items: flex-start; flex-direction: column; gap: 12px; }
-    .contact-email { font-size: clamp(16px, 2vw, 24px); line-height: 1.5; margin-bottom: 12px; overflow-wrap: anywhere; }
-    .contact-details > a:not(.contact-email) { font-size: 11px; color: #a0a09c; min-height: 32px; display: inline-flex; align-items: center; }
-    .contact-details .pdf-link { margin-top: 24px; }
-    footer { padding: 0 64px 36px; display: flex; justify-content: space-between; gap: 24px; font-size: 8px; letter-spacing: .8px; color: #a0a09c; }
-    @supports (min-height: 100svh) { #hero { min-height: 100svh; } }
-    @media (max-width: 680px) {
-      .site-header { padding: 24px; gap: 16px; }
-      .identity { font-size: 9px; letter-spacing: .6px; }
-      nav { gap: 20px; }
-      nav a { font-size: 9px; letter-spacing: .5px; }
-      #hero { padding: 124px 24px 32px; }
-      .hero-title { padding: 48px 0 72px; font-size: clamp(36px, 10vw, 56px); }
-      .hero-note, .pdf-link { font-size: 8px; letter-spacing: .55px; }
-      #work { padding: 72px 24px 96px; }
-      .work-grid { grid-template-columns: 1fr; gap: 44px; }
-      .section-heading { margin-bottom: 28px; }
-      .work-caption { margin-top: 14px; }
-      #contact { margin: 0 24px; padding: 56px 0 72px; grid-template-columns: 1fr; gap: 36px; }
-      footer { padding: 0 24px 28px; font-size: 7px; gap: 16px; }
-    }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  </style>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#0a0a0a">
+ <title>JEON WOOJIN — FILMOGRAPHY</title>
+ <meta name="description" content="Filmography of director Jeon Woojin. Music videos and fashion films, from RIZZ to REMINISCENCE.">
+ <meta property="og:title" content="JEON WOOJIN — FILMOGRAPHY"><meta property="og:description" content="Nine films by director Jeon Woojin.">
+ <meta property="og:type" content="website"><meta property="og:url" content="https://zerobackfilm.github.io/ZEROBACKFILM/"><meta property="og:image" content="https://zerobackfilm.github.io/ZEROBACKFILM/assets/rizz.webp">
+ <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+ <link rel="preload" href="assets/roboto-condensed.ttf" as="font" type="font/ttf" crossorigin>
+ <script src="cover-config.js" defer></script>
+ <script src="cover-design.js" defer></script>
+ <script src="app.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#work">Skip to works</a>
-  <header class="site-header">
-    <a class="identity" href="#hero">DIR. JEON WOOJIN</a>
-    <nav aria-label="Main navigation"><a href="#work">WORKS</a><a href="#contact">CONTACT</a></nav>
-  </header>
-  <main>
-    <section id="hero" aria-label="Filmography cover">
-      <h1 class="hero-title">FILMOGRAPHY</h1>
-      <div class="hero-bottom"><p class="hero-note">FILM / MUSIC VIDEO</p><a class="pdf-link" href="assets/portfolio/JEON-WOOJIN-Portfolio.pdf" download="JEON-WOOJIN-Portfolio.pdf" aria-label="Download DIR. JEON WOOJIN portfolio PDF, 12 pages">DOWNLOAD PDF</a></div>
+ <a class="skip-link" href="#archive">Skip to films</a>
+ <main>
+  <section class="cover screen" id="home" aria-labelledby="cover-title">
+   <a class="cover-title-link" href="#archive"><span class="cover-role">DIRECTOR</span><h1 id="cover-title">FILMOGRAPHY</h1></a>
+   <div class="edge-row cover-bottom"><span>JEON WOOJIN</span><a class="explore-link" href="#archive">EXPLORE THE FILMS <span aria-hidden="true">↓</span></a><span>01</span></div>
+  </section>
+  <section class="archive screen" id="archive" aria-labelledby="archive-heading">
+   <div class="edge-row archive-top"><a href="#home">FILMOGRAPHY</a><h2 id="archive-heading">ARCHIVE</h2><span>09 FILMS</span></div>
+   <div class="archive-grid"><a class="archive-card" href="#rizz" aria-label="RIZZ — XLOV">
+      <div class="card-caption"><span class="card-number">01.</span><h3>RIZZ</h3><span class="card-artist">XLOV</span></div>
+      <div class="card-image"><img src="assets/rizz-archive.webp" alt="RIZZ music video still" width="840" height="472" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>
+    </a><a class="archive-card" href="#gimme" aria-label="GIMME — CHOCO 1&amp;2">
+      <div class="card-caption"><span class="card-number">02.</span><h3>GIMME</h3><span class="card-artist">CHOCO 1&amp;2</span></div>
+      <div class="card-image"><img src="assets/gimme-archive.webp" alt="GIMME music video still" width="840" height="472" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>
+    </a><a class="archive-card" href="#secret" aria-label="SECRET — CAMO">
+      <div class="card-caption"><span class="card-number">03.</span><h3>SECRET</h3><span class="card-artist">CAMO</span></div>
+      <div class="card-image"><img src="assets/secret-archive.webp" alt="SECRET music video still" width="840" height="472" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>
+    </a><a class="archive-card" href="#frenzy" aria-label="FRENZY — CHOCO 1&amp;2">
+      <div class="card-caption"><span class="card-number">04.</span><h3>FRENZY</h3><span class="card-artist">CHOCO 1&amp;2</span></div>
+      <div class="card-image"><img src="assets/frenzy-archive.webp" alt="FRENZY music video still" width="840" height="472" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>
+    </a><a class="archive-card" href="#last-nights-dream" aria-label="LAST NIGHT&#x27;S DREAM — HENA">
+      <div class="card-caption"><span class="card-number">05.</span><h3>LAST NIGHT&#x27;S DREAM</h3><span class="card-artist">HENA</span></div>
+      <div class="card-image"><img src="assets/last-nights-dream-archive.webp" alt="LAST NIGHT&#x27;S DREAM music video still" width="840" height="472" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>
+    </a><a class="archive-card" href="#courage-and-liberation" aria-label="COURAGE AND LIBERATION — SALT &amp; CHOCOLATE">
+      <div class="card-caption"><span class="card-number">06.</span><h3>COURAGE AND LIBERATION</h3><span class="card-artist">SALT &amp; CHOCOLATE</span></div>
+      <div class="card-image"><img src="assets/courage-and-liberation-archive.webp" alt="COURAGE AND LIBERATION fashion film still" width="840" height="472" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>
+    </a><a class="archive-card" href="#i-know" aria-label="I KNOW — GYUN">
+      <div class="card-caption"><span class="card-number">07.</span><h3>I KNOW</h3><span class="card-artist">GYUN</span></div>
+      <div class="card-image"><img src="assets/i-know-archive.webp" alt="I KNOW music video still" width="840" height="472" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>
+    </a><a class="archive-card" href="#i-want-to-be-loved" aria-label="I WANT TO BE LOVED — DIVINE">
+      <div class="card-caption"><span class="card-number">08.</span><h3>I WANT TO BE LOVED</h3><span class="card-artist">DIVINE</span></div>
+      <div class="card-image"><img src="assets/i-want-to-be-loved-archive.webp" alt="I WANT TO BE LOVED music video still" width="840" height="472" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>
+    </a><a class="archive-card" href="#reminiscence" aria-label="REMINISCENCE — ARON">
+      <div class="card-caption"><span class="card-number">09.</span><h3>REMINISCENCE</h3><span class="card-artist">ARON</span></div>
+      <div class="card-image"><img src="assets/reminiscence-archive.webp" alt="REMINISCENCE music video still" width="840" height="472" loading="lazy"><span class="card-arrow" aria-hidden="true">↗</span></div>
+    </a></div>
+   <div class="edge-row archive-bottom"><span>MUSIC VIDEO / FASHION FILM</span><span class="archive-hint">SELECT A FILM TO EXPLORE</span><span>02</span></div>
+  </section>
+  <section class="film screen" id="rizz" aria-labelledby="title-rizz">
+      <img class="film-still" src="assets/rizz.webp" alt="RIZZ — XLOV, music video still" width="1920" height="1080" loading="lazy">
+      <div class="film-shade" aria-hidden="true"></div>
+      <div class="edge-row film-top"><a href="#home">FILMOGRAPHY</a><span>XLOV</span><a href="#archive">ARCHIVE</a></div>
+      <h2 id="title-rizz" class="film-title"><a href="https://www.youtube.com/watch?v=NCuFonpf-qk" data-film="rizz" aria-label="Watch RIZZ by XLOV">RIZZ</a></h2>
+      <div class="edge-row film-bottom"><span>MUSIC VIDEO</span><a class="watch-link" href="https://www.youtube.com/watch?v=NCuFonpf-qk" data-film="rizz">WATCH FILM <span aria-hidden="true">↗</span></a><span>03</span></div>
+    </section><section class="film screen" id="gimme" aria-labelledby="title-gimme">
+      <img class="film-still" src="assets/gimme.webp" alt="GIMME — CHOCO 1&amp;2, music video still" width="1920" height="1080" loading="lazy">
+      <div class="film-shade" aria-hidden="true"></div>
+      <div class="edge-row film-top"><a href="#home">FILMOGRAPHY</a><span>CHOCO 1&amp;2</span><a href="#archive">ARCHIVE</a></div>
+      <h2 id="title-gimme" class="film-title"><a href="https://www.youtube.com/watch?v=pIfScZGDNsc" data-film="gimme" aria-label="Watch GIMME by CHOCO 1&amp;2">GIMME</a></h2>
+      <div class="edge-row film-bottom"><span>MUSIC VIDEO</span><a class="watch-link" href="https://www.youtube.com/watch?v=pIfScZGDNsc" data-film="gimme">WATCH FILM <span aria-hidden="true">↗</span></a><span>04</span></div>
+    </section><section class="film screen" id="secret" aria-labelledby="title-secret">
+      <img class="film-still" src="assets/secret.webp" alt="SECRET — CAMO, music video still" width="1920" height="1080" loading="lazy">
+      <div class="film-shade" aria-hidden="true"></div>
+      <div class="edge-row film-top"><a href="#home">FILMOGRAPHY</a><span>CAMO</span><a href="#archive">ARCHIVE</a></div>
+      <h2 id="title-secret" class="film-title"><a href="https://www.youtube.com/watch?v=b7-vel_KNAc" target="_blank" rel="noopener noreferrer" aria-label="Watch SECRET by CAMO">SECRET</a></h2>
+      <div class="edge-row film-bottom"><span>MUSIC VIDEO</span><a class="watch-link" href="https://www.youtube.com/watch?v=b7-vel_KNAc" target="_blank" rel="noopener noreferrer">WATCH FILM <span aria-hidden="true">↗</span></a><span>05</span></div>
+    </section><section class="film screen" id="frenzy" aria-labelledby="title-frenzy">
+      <img class="film-still" src="assets/frenzy.webp" alt="FRENZY — CHOCO 1&amp;2, music video still" width="1920" height="1080" loading="lazy">
+      <div class="film-shade" aria-hidden="true"></div>
+      <div class="edge-row film-top"><a href="#home">FILMOGRAPHY</a><span>CHOCO 1&amp;2</span><a href="#archive">ARCHIVE</a></div>
+      <h2 id="title-frenzy" class="film-title"><a href="https://www.youtube.com/watch?v=tDKjrHeuyOw" data-film="frenzy" aria-label="Watch FRENZY by CHOCO 1&amp;2">FRENZY</a></h2>
+      <div class="edge-row film-bottom"><span>MUSIC VIDEO</span><a class="watch-link" href="https://www.youtube.com/watch?v=tDKjrHeuyOw" data-film="frenzy">WATCH FILM <span aria-hidden="true">↗</span></a><span>06</span></div>
+    </section><section class="film screen" id="last-nights-dream" aria-labelledby="title-last-nights-dream">
+      <img class="film-still" src="assets/last-nights-dream.webp" alt="LAST NIGHT&#x27;S DREAM — HENA, music video still" width="1920" height="1080" loading="lazy">
+      <div class="film-shade" aria-hidden="true"></div>
+      <div class="edge-row film-top"><a href="#home">FILMOGRAPHY</a><span>HENA</span><a href="#archive">ARCHIVE</a></div>
+      <h2 id="title-last-nights-dream" class="film-title long-title"><a href="https://www.youtube.com/watch?v=xldY7xZUmwI" data-film="last-nights-dream" aria-label="Watch LAST NIGHT&#x27;S DREAM by HENA">LAST NIGHT&#x27;S DREAM</a></h2>
+      <div class="edge-row film-bottom"><span>MUSIC VIDEO</span><a class="watch-link" href="https://www.youtube.com/watch?v=xldY7xZUmwI" data-film="last-nights-dream">WATCH FILM <span aria-hidden="true">↗</span></a><span>07</span></div>
+    </section><section class="film screen" id="courage-and-liberation" aria-labelledby="title-courage-and-liberation">
+      <img class="film-still" src="assets/courage-and-liberation.webp" alt="COURAGE AND LIBERATION — SALT &amp; CHOCOLATE, fashion film still" width="1920" height="1080" loading="lazy">
+      <div class="film-shade" aria-hidden="true"></div>
+      <div class="edge-row film-top"><a href="#home">FILMOGRAPHY</a><span>SALT &amp; CHOCOLATE</span><a href="#archive">ARCHIVE</a></div>
+      <h2 id="title-courage-and-liberation" class="film-title long-title"><a href="https://www.youtube.com/watch?v=yR9XX8S3c3g" data-film="courage-and-liberation" aria-label="Watch COURAGE AND LIBERATION by SALT &amp; CHOCOLATE">COURAGE AND LIBERATION</a></h2>
+      <div class="edge-row film-bottom"><span>FASHION FILM</span><a class="watch-link" href="https://www.youtube.com/watch?v=yR9XX8S3c3g" data-film="courage-and-liberation">WATCH FILM <span aria-hidden="true">↗</span></a><span>08</span></div>
+    </section><section class="film screen" id="i-know" aria-labelledby="title-i-know">
+      <img class="film-still" src="assets/i-know.webp" alt="I KNOW — GYUN, music video still" width="1920" height="1080" loading="lazy">
+      <div class="film-shade" aria-hidden="true"></div>
+      <div class="edge-row film-top"><a href="#home">FILMOGRAPHY</a><span>GYUN</span><a href="#archive">ARCHIVE</a></div>
+      <h2 id="title-i-know" class="film-title"><a href="https://www.youtube.com/watch?v=KsAwkCQV-lU" data-film="i-know" aria-label="Watch I KNOW by GYUN">I KNOW</a></h2>
+      <div class="edge-row film-bottom"><span>MUSIC VIDEO</span><a class="watch-link" href="https://www.youtube.com/watch?v=KsAwkCQV-lU" data-film="i-know">WATCH FILM <span aria-hidden="true">↗</span></a><span>09</span></div>
+    </section><section class="film screen" id="i-want-to-be-loved" aria-labelledby="title-i-want-to-be-loved">
+      <img class="film-still" src="assets/i-want-to-be-loved.webp" alt="I WANT TO BE LOVED — DIVINE, music video still" width="1920" height="1080" loading="lazy">
+      <div class="film-shade" aria-hidden="true"></div>
+      <div class="edge-row film-top"><a href="#home">FILMOGRAPHY</a><span>DIVINE</span><a href="#archive">ARCHIVE</a></div>
+      <h2 id="title-i-want-to-be-loved" class="film-title long-title"><a href="https://www.youtube.com/watch?v=SuomKkNFQnw" data-film="i-want-to-be-loved" aria-label="Watch I WANT TO BE LOVED by DIVINE">I WANT TO BE LOVED</a></h2>
+      <div class="edge-row film-bottom"><span>MUSIC VIDEO</span><a class="watch-link" href="https://www.youtube.com/watch?v=SuomKkNFQnw" data-film="i-want-to-be-loved">WATCH FILM <span aria-hidden="true">↗</span></a><span>10</span></div>
+    </section><section class="film screen" id="reminiscence" aria-labelledby="title-reminiscence">
+      <img class="film-still" src="assets/reminiscence.webp" alt="REMINISCENCE — ARON, music video still" width="1920" height="1080" loading="lazy">
+      <div class="film-shade" aria-hidden="true"></div>
+      <div class="edge-row film-top"><a href="#home">FILMOGRAPHY</a><span>ARON</span><a href="#archive">ARCHIVE</a></div>
+      <h2 id="title-reminiscence" class="film-title"><a href="https://www.youtube.com/watch?v=O4o-ooySCUw" target="_blank" rel="noopener noreferrer" aria-label="Watch REMINISCENCE by ARON">REMINISCENCE</a></h2>
+      <div class="edge-row film-bottom"><span>MUSIC VIDEO</span><a class="watch-link" href="https://www.youtube.com/watch?v=O4o-ooySCUw" target="_blank" rel="noopener noreferrer">WATCH FILM <span aria-hidden="true">↗</span></a><span>11</span></div>
     </section>
-    <section id="work" aria-labelledby="works-heading">
-      <div class="section-heading"><h2 id="works-heading">WORKS</h2><span>01 - 09</span></div>
-      <div class="work-grid">
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=NCuFonpf-qk" target="_blank" rel="noopener noreferrer" aria-label="Watch RIZZ by XLOV">
-        <img src="https://img.youtube.com/vi/NCuFonpf-qk/maxresdefault.jpg" alt="RIZZ" width="1280" height="720" loading="lazy" decoding="async" />
-        <div class="work-caption"><h3 class="work-title">RIZZ</h3><p class="work-artist">XLOV</p></div>
-      </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=pIfScZGDNsc" target="_blank" rel="noopener noreferrer" aria-label="Watch GIMME by CHOCO 1&amp;2">
-        <img src="https://img.youtube.com/vi/pIfScZGDNsc/maxresdefault.jpg" alt="GIMME" width="1280" height="720" loading="lazy" decoding="async" />
-        <div class="work-caption"><h3 class="work-title">GIMME</h3><p class="work-artist">CHOCO 1&amp;2</p></div>
-      </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=b7-vel_KNAc" target="_blank" rel="noopener noreferrer" aria-label="Watch SECRET by CAMO">
-        <img src="https://img.youtube.com/vi/b7-vel_KNAc/maxresdefault.jpg" alt="SECRET" width="1280" height="720" loading="lazy" decoding="async" />
-        <div class="work-caption"><h3 class="work-title">SECRET</h3><p class="work-artist">CAMO</p></div>
-      </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=tDKjrHeuyOw" target="_blank" rel="noopener noreferrer" aria-label="Watch FRENZY by CHOCO 1&amp;2">
-        <img src="https://img.youtube.com/vi/tDKjrHeuyOw/maxresdefault.jpg" alt="FRENZY" width="1280" height="720" loading="lazy" decoding="async" />
-        <div class="work-caption"><h3 class="work-title">FRENZY</h3><p class="work-artist">CHOCO 1&amp;2</p></div>
-      </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=xldY7xZUmwI" target="_blank" rel="noopener noreferrer" aria-label="Watch LAST NIGHT&#x27;S DREAM by HENA">
-        <img src="https://img.youtube.com/vi/xldY7xZUmwI/maxresdefault.jpg" alt="LAST NIGHT&#x27;S DREAM" width="1280" height="720" loading="lazy" decoding="async" />
-        <div class="work-caption"><h3 class="work-title">LAST NIGHT&#x27;S DREAM</h3><p class="work-artist">HENA</p></div>
-      </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=9CsUWavWaGU" target="_blank" rel="noopener noreferrer" aria-label="Watch COURAGE AND LIBERATION by SALT &amp; CHOCOLATE">
-        <img src="https://img.youtube.com/vi/9CsUWavWaGU/maxresdefault.jpg" alt="COURAGE AND LIBERATION" width="1280" height="720" loading="lazy" decoding="async" />
-        <div class="work-caption"><h3 class="work-title">COURAGE AND LIBERATION</h3><p class="work-artist">SALT &amp; CHOCOLATE</p></div>
-      </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=KsAwkCQV-lU" target="_blank" rel="noopener noreferrer" aria-label="Watch I KNOW by GYUN">
-        <img src="assets/thumbnails/i-know.jpg" alt="I KNOW" width="1280" height="720" loading="lazy" decoding="async" />
-        <div class="work-caption"><h3 class="work-title">I KNOW</h3><p class="work-artist">GYUN</p></div>
-      </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=SuomKkNFQnw" target="_blank" rel="noopener noreferrer" aria-label="Watch I WANT TO BE LOVED by DIVINE">
-        <img src="assets/thumbnails/i-want-to-be-loved.jpg" alt="I WANT TO BE LOVED" width="1280" height="720" loading="lazy" decoding="async" />
-        <div class="work-caption"><h3 class="work-title">I WANT TO BE LOVED</h3><p class="work-artist">DIVINE</p></div>
-      </a>
-      <a class="grid-cell" href="https://www.youtube.com/watch?v=O4o-ooySCUw" target="_blank" rel="noopener noreferrer" aria-label="Watch REMINISCENCE by ARON">
-        <img src="assets/thumbnails/hoisang.jpg" alt="REMINISCENCE" width="1280" height="720" loading="lazy" decoding="async" />
-        <div class="work-caption"><h3 class="work-title">REMINISCENCE</h3><p class="work-artist">ARON</p></div>
-      </a>
-      </div>
-    </section>
-    <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">CONTACT</h2>
-      <div class="contact-details">
-        <a class="contact-email" href="mailto:zeroback0film@gmail.com">zeroback0film@gmail.com</a>
-        <a href="tel:+821062504093">010-6250-4093</a>
-        <a href="https://www.instagram.com/_fif3r/" target="_blank" rel="noopener noreferrer">@_fif3r</a>
-        <a class="pdf-link" href="assets/portfolio/JEON-WOOJIN-Portfolio.pdf" download="JEON-WOOJIN-Portfolio.pdf" aria-label="Download DIR. JEON WOOJIN portfolio PDF, 12 pages">DOWNLOAD PDF</a>
-      </div>
-    </section>
-  </main>
-  <footer><span>DIR. JEON WOOJIN</span><span>SEOUL, REPUBLIC OF KOREA</span></footer>
-  <script>
-    document.querySelectorAll('.grid-cell img').forEach(img => {
-      img.onerror = function () {
-        this.onerror = null;
-        const id = new URL(this.closest('a').href).searchParams.get('v');
-        if (id) this.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-      };
-    });
-  </script>
-</body>
-</html>
+  <footer class="end-line"><a href="#archive">BACK TO ARCHIVE <span aria-hidden="true">↗</span></a><a href="#home">BACK TO TOP <span aria-hidden="true">↑</span></a></footer>
+ </main>
+ <dialog id="film-player" aria-labelledby="player-title">
+   <div class="player-shell">
+    <div class="player-top"><p id="player-title"></p><button id="close-player" type="button" aria-label="Close film">CLOSE <span aria-hidden="true">×</span></button></div>
+    <div class="player-frame" id="player-frame"></div>
+    <div class="player-bottom"><span id="player-artist"></span><a id="youtube-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">OPEN ON YOUTUBE ↗</a></div>
+   </div>
+ </dialog>
+ <script id="film-data" type="application/json">[{"slug": "rizz", "title": "RIZZ", "artist": "XLOV", "video": "NCuFonpf-qk", "url": "https://www.youtube.com/watch?v=NCuFonpf-qk"}, {"slug": "gimme", "title": "GIMME", "artist": "CHOCO 1&2", "video": "pIfScZGDNsc", "url": "https://www.youtube.com/watch?v=pIfScZGDNsc"}, {"slug": "secret", "title": "SECRET", "artist": "CAMO", "video": "b7-vel_KNAc", "url": "https://www.youtube.com/watch?v=b7-vel_KNAc"}, {"slug": "frenzy", "title": "FRENZY", "artist": "CHOCO 1&2", "video": "tDKjrHeuyOw", "url": "https://www.youtube.com/watch?v=tDKjrHeuyOw"}, {"slug": "last-nights-dream", "title": "LAST NIGHT'S DREAM", "artist": "HENA", "video": "xldY7xZUmwI", "url": "https://www.youtube.com/watch?v=xldY7xZUmwI"}, {"slug": "courage-and-liberation", "title": "COURAGE AND LIBERATION", "artist": "SALT & CHOCOLATE", "video": "yR9XX8S3c3g", "url": "https://www.youtube.com/watch?v=yR9XX8S3c3g"}, {"slug": "i-know", "title": "I KNOW", "artist": "GYUN", "video": "KsAwkCQV-lU", "url": "https://www.youtube.com/watch?v=KsAwkCQV-lU"}, {"slug": "i-want-to-be-loved", "title": "I WANT TO BE LOVED", "artist": "DIVINE", "video": "SuomKkNFQnw", "url": "https://www.youtube.com/watch?v=SuomKkNFQnw"}, {"slug": "reminiscence", "title": "REMINISCENCE", "artist": "ARON", "video": "O4o-ooySCUw", "url": "https://www.youtube.com/watch?v=O4o-ooySCUw"}]</script>
+</body></html>
+
+
+
